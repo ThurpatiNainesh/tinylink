@@ -90,7 +90,7 @@ export default function LinkTable() {
 
   const getFullShortUrl = (code: string) => {
     if (typeof window !== 'undefined') {
-      return `${window.location.origin}/${code}`;
+      return `${code}`;
     }
     return `/${code}`;
   };
