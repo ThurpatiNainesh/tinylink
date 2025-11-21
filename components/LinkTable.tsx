@@ -212,7 +212,7 @@ export default function LinkTable() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col gap-1">
                           <a
-                            href={fullShortUrl}
+                            href={link.targetUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm font-medium text-primary hover:underline flex items-center gap-1"
