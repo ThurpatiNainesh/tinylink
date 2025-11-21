@@ -1,21 +1,15 @@
 import { Pool } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 import * as schema from './schema';
-import * as dotenv from 'dotenv';
-import path from 'path';
 
-// Load environment variables
-dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
-
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not defined in environment variables');
-}
+// Direct database configuration
+const DATABASE_URL = 'postgresql://neondb_owner:npg_qSyoATN95kMh@ep-withered-boat-adpdjgj7-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require';
 
 // Create the connection pool
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: DATABASE_URL,
   ssl: {
-    rejectUnauthorized: process.env.NODE_ENV === 'production',
+    rejectUnauthorized: false, // Set to false for development, use true in production with proper certificates
   },
 });
 
